@@ -22,61 +22,14 @@ import frc.robot.subsystems.Wrist;
 
 public class AutonCommand extends SequentialCommandGroup {
 
-    public AutonCommand(
-            SwerveSubsystem driveSubsystem, Intake intake, Indexing indexing, Shooter shooter, Wrist wrist) {
+    public AutonCommand(SwerveSubsystem driveSubsystem, Intake intake, Indexing indexing, Shooter shooter, Wrist wrist) {
         addRequirements(driveSubsystem);
 
-        final double velocityX = 0.4;
-        final double velocityY = 0;
-        // Angular Velocity
-        final double omegaRadiansPerSecond = 0;
-
+        // add variables here
+        
         addCommands(
-                // Make sure everything is stopped
-                new ParallelCommandGroup(
-                        Commands.runOnce(() -> {
-                            intake.stop();
-                            indexing.stop();
-                        })),
-                new WaitCommand(10).andThen(
-                        driveSubsystem.run(() -> driveSubsystem.drive(new ChassisSpeeds(velocityX,
-                                velocityY, omegaRadiansPerSecond))).withTimeout(5)));
-
-        // addCommands(
-        // // Make sure everything is stopped
-        // new ParallelCommandGroup(
-        // Commands.runOnce(() -> {
-        // intake.stop();
-        // indexing.stop();
-        // })
-        // ),
-
-        // driveSubsystem
-        // .run(() -> driveSubsystem.drive(new ChassisSpeeds(velocityX, velocityY,
-        // omegaRadiansPerSecond)))
-        // .withTimeout(4.7),
-
-        // new ParallelCommandGroup(
-        // Commands.runOnce(() -> {
-        // shooter.set(-1);
-        // })
-        // ),
-
-        // new WaitCommand(1.5),
-        // new ParallelCommandGroup(
-        // Commands.runOnce(() -> {
-        // indexing.set(1);
-        // })
-        // ),
-
-        // new WaitCommand(0.5),
-        // new ParallelCommandGroup(
-        // Commands.runOnce(() -> {
-        // indexing.set(0);
-        // shooter.set(0);
-        // })
-        // ));
-
+            
+        );
     }
 
 }
