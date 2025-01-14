@@ -11,10 +11,16 @@ import frc.robot.RobotContainer;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.subsystems.SwerveSubsystem;
 
+// for EXAMPLE subsystem
+import frc.robot.subsystems.Turn;
+
 
 public class DefaultDrive extends Command {
     CommandXboxController joystick;
     SwerveSubsystem m_Swerb;
+
+    // for EXAMPLE subsystem
+    Turn m_Turn;
 
     SlewRateLimiter xRateLimiter = new SlewRateLimiter(DriveConstants.kXYSlewRate);
     SlewRateLimiter yRateLimiter = new SlewRateLimiter(DriveConstants.kXYSlewRate);
@@ -24,6 +30,9 @@ public class DefaultDrive extends Command {
         addRequirements(RobotContainer.m_Swerb);
         this.m_Swerb = RobotContainer.m_Swerb;
         joystick = RobotContainer.driverController;
+
+        // for EXAMPLE subsystem
+        this.m_Turn = RobotContainer.m_turn;
     }
     
     @Override
@@ -31,8 +40,9 @@ public class DefaultDrive extends Command {
         double maxSpeed = Constants.DriveConstants.kMaxLinearSpeed;
         double vx = -joystick.getLeftY() * maxSpeed;
         double vy = -joystick.getLeftX() * maxSpeed;
-        double vw = -joystick.getRightX() * .1;
-        // System.out.println(vw);
+        
+        // for our EXAMPLE subsystem (add the turn amount to whatever we need it to turn like)
+        double vw = -joystick.getRightX() * .1  + m_Turn.turnSpeed;
         
         // Apply slew rate limits
         vx = xRateLimiter.calculate(vx);

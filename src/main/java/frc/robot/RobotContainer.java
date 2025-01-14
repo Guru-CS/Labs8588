@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard; // SmartDashboard
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup; // Parallel command group
 import edu.wpi.first.wpilibj2.command.WaitCommand; // Wait command
+import frc.robot.subsystems.Turn;
 
 /**
  * The RobotContainer class is responsible for declaring the robot's subsystems,
@@ -35,6 +36,7 @@ public class RobotContainer {
   public static final Shooter shooter = new Shooter();
   public static final Wrist wrist = new Wrist();
   public static final AutonCommand m_autonCommand = new AutonCommand(m_Swerb, intake, indexing, shooter, wrist);
+  public static final Turn m_turn = new Turn();
 
   // Create an Xbox controller instance to handle driver input (0 is the port
   // number)
@@ -60,8 +62,22 @@ public class RobotContainer {
 
     // Configure the x button button to reset the robot's yaw (orientation)
 
-    driverController.x().onTrue(new InstantCommand(() -> m_Swerb.zeroYaw())); // Resets the yaw when D-Pad Up is pressed
-    driverController.x().onTrue(new InstantCommand(() -> SmartDashboard.putBoolean("Reset Yaw", true)));
+    //driverController.x().onTrue(new InstantCommand(() -> m_Swerb.zeroYaw())); // Resets the yaw when D-Pad Up is pressed
+    // for EXAMPLE subsystem
+    driverController.x().onTrue(new ParallelCommandGroup(
+      new InstantCommand(
+        () -> {
+          m_turn.spin(180);
+          System.out.println(m_turn.turnSpeed);
+        }
+      ),
+      new WaitCommand(1).andThen(
+        () -> {
+          m_turn.stopSpinning();
+        }
+      )
+    ));
+    //driverController.x().onTrue(new InstantCommand(() -> SmartDashboard.putBoolean("Reset Yaw", true)));
 
     // Intake control: when left bumper is pressed
     driverController.leftBumper()

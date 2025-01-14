@@ -117,7 +117,8 @@ public class Wrist extends TrapezoidProfileSubsystem {
     // setWristGoalDefaultCommand();
 
     // Creates a SysIdRoutine
-    routine = new SysIdRoutine(
+    /*
+        routine = new SysIdRoutine(
         new SysIdRoutine.Config(),
         new SysIdRoutine.Mechanism(this::voltageAim,
             log -> {
@@ -129,7 +130,7 @@ public class Wrist extends TrapezoidProfileSubsystem {
                   .linearVelocity(
                       m_velocity.mut_replace(m_encoder.getVelocity(), MetersPerSecond));
             },
-            this));
+            this));*/
   }
 
   private void voltageAim(Measure<Voltage> volts) {

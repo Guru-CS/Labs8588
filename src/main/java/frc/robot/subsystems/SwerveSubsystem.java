@@ -50,7 +50,6 @@ public class SwerveSubsystem extends SubsystemBase {
   }
 
   public void drive(ChassisSpeeds chassisSpeeds) {
-
     SwerveModuleState[] states = m_DriveKinematics.toSwerveModuleStates(chassisSpeeds);
 
     // Normalize these speeds if they become impossibly fast
