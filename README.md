@@ -1,10 +1,5 @@
-<h1>Robocon 2024 @ Bridgewater Mall</h1>
-<h2>Changes</h2>
-<ul>
-  <li>Changed keybinds</li>
-  <li>Added new auton (just moves forward)</li>
-  <li>Added wrist functionality</li>
-</ul>
+<h1>8588 Labs</h1>
+Our latest code is on here. This repo is where we'll be completing our labs for the programming subteam. I'll push the solutions here at the end of every meeting.
 
 <h2>Keybinds as of 9/28/24</h2>
 Left Stick = turn<br>
