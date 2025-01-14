@@ -1,5 +1,8 @@
 <h1>8588 Labs</h1>
 Our latest code is on here. This repo is where we'll be completing our labs for the programming subteam. I'll push the solutions here at the end of every meeting.
+<br><br>
+- Check 'AutonCommand.java' for the solution to the Autonomous challenge we completed in the beginning of the year
+<br>- Check 'DefaultDrive.java,' 'RobotContainer.java,' and the new 'Turn.java' file for the solution to the make a subsystem challenge we completed last month. This subsystem spins the robot 180 degrees upon clicking X.
 
 <h2>Keybinds as of 9/28/24</h2>
 Left Stick = turn<br>
